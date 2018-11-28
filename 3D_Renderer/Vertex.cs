@@ -12,6 +12,8 @@ namespace _3D_Renderer {
         public Vector3 Colour;
         public Vector3 Position;
         public Vector3 Normal;
+        public float s;
+        public float t;
 
         public Vertex(Vector3 colour, Vector3 position, Vector3 normal) {
             this.Colour = colour;
