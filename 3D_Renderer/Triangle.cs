@@ -59,7 +59,9 @@ namespace _3D_Renderer {
             temp.A.st = this.stA;
             temp.B.st = this.stB;
             temp.C.st = this.stC;
-
+            temp.A.Normal = Vector3.TransformNormal(this.A.Normal, m);
+            temp.B.Normal = Vector3.TransformNormal(this.B.Normal, m);
+            temp.C.Normal = Vector3.TransformNormal(this.C.Normal, m);
 
             return temp;
             

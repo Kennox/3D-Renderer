@@ -37,7 +37,7 @@ namespace _3D_Renderer {
         public static WriteableBitmap WriteableBitmap { get; set; }
         public static Buffer[,] ZBuffer;
 
-        Vector3 LightPosition = new Vector3(0, 0, 0);
+        Vector3 LightPosition = Vector3.Zero;
         Vector3 LightColour = Vector3.One;
         Vector3 Eye = Vector3.Zero;
 
@@ -190,8 +190,10 @@ namespace _3D_Renderer {
                         float kS = sBilinear - sFloor;
                         float kT = tBilinear - tFloor;
 
-                        var c1 = ColourConverter(triangle.Texture.GetPixel(sFloor, tFloor)) * (1 - kT) + ColourConverter(triangle.Texture.GetPixel(sFloor, tFloor + 1)) * kT;
-                        var c2 = ColourConverter(triangle.Texture.GetPixel(sFloor + 1, tFloor)) * (1 - kT) + ColourConverter(triangle.Texture.GetPixel(sFloor + 1, tFloor + 1)) * kT;
+                        var c1 = ColourConverter(triangle.Texture.GetPixel(sFloor, tFloor)) * (1 - kT)
+                                    + ColourConverter(triangle.Texture.GetPixel(sFloor, tFloor + 1)) * kT;
+                        var c2 = ColourConverter(triangle.Texture.GetPixel(sFloor + 1, tFloor)) * (1 - kT)
+                                    + ColourConverter(triangle.Texture.GetPixel(sFloor + 1, tFloor + 1)) * kT;
                         Colour = c1 * (1 - kS) + c2 * kS;
 
                     } else {
