@@ -34,8 +34,15 @@ namespace _3D_Renderer {
             this.C = new Vertex(colourC, c, normalC);
         }
 
-        public Triangle Transform(Matrix4x4 m) {
+        public Triangle(Vector3 a, Vector3 b, Vector3 c, Vector2 stA, Vector2 stB, Vector2 stC) {
+            this.Normal = Vector3.Normalize(Vector3.Cross(b - a, c - a));
 
+            this.A = new Vertex(a, Normal, stA);
+            this.B = new Vertex(b, Normal, stB);
+            this.C = new Vertex(c, Normal, stC);
+        }
+
+        public Triangle Transform(Matrix4x4 m) {
             return new Triangle(Vector3.Transform(A.Position, m), Vector3.Transform(B.Position, m), Vector3.Transform(C.Position, m), A.Colour, B.Colour, C.Colour);
         }
     }
